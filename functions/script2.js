@@ -8,3 +8,4 @@ console.log(result1);
 //console.log(result2);
 //var result3 = multiply(4, 12);
 //console.log(result3);
+

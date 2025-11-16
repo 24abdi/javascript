@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Name - Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      color: #333;
+    }
+    header {
+      background: #111;
+      color: #fff;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+    nav {
+      background: #222;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 1rem;
+    }
+    nav a:hover {
+      color: #f39c12;
+    }
+    .section {
+      max-width: 1000px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+    .about, .skills, .projects, .contact {
+      margin-bottom: 60px;
+    }
+    .skills-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .skills-list li {
+      background: #111;
+      color: #fff;
+      padding: 8px 15px;
+      margin: 5px;
+      border-radius: 4px;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .project-card {
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+    .project-card img {
+      width: 100%;
+      display: block;
+    }
+    .project-card .project-info {
+      padding: 15px;
+    }
+    .project-card .project-info h3 {
+      margin: 0 0 10px;
+    }
+    .project-card .project-info p {
+      margin: 0 0 15px;
+      color: #666;
+    }
+    .project-card .project-info a {
+      text-decoration: none;
+      color: #f39c12;
+      font-weight: bold;
+    }
+    .contact form {
+      display: flex;
+      flex-direction: column;
+    }
+    .contact form input, .contact form textarea {
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    .contact form button {
+      padding: 12px;
+      border: none;
+      background: #f39c12;
+      color: #fff;
+      font-size: 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .contact form button:hover {
+      background: #e67e22;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #222;
+      color: #aaa;
+    }
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+      .project-card .project-info p {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Your Name Here</h1>
+    <p>Web Developer | Designer | Problem Solver</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="section about" id="about">
+    <h2>About Me</h2>
+    <p>Brief intro about who you are, what you do, your goals. Something to let people know your style, background, maybe education or experience.</p>
+  </div>
+
+  <div class="section skills" id="skills">
+    <h2>Skills</h2>
+    <ul class="skills-list">
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+      <li>React</li>
+      <li>Node.js</li>
+      <li>…</li>
+    </ul>
+  </div>
+
+  <div class="section projects" id="projects">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <img src="project1-image.jpg" alt="Project 1">
+        <div class="project-info">
+          <h3>Project One</h3>
+          <p>Short description of what the project is, your role, technologies used.</p>
+          <a href="#">View more</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="project2-image.jpg" alt="Project 2">
+        <div class="project-info">
+          <h3>Project Two</h3>
+          <p>Short description…</p>
+          <a href="#">View more</a>
+        </div>
+      </div>
+      <!-- more project cards -->
+    </div>
+  </div>
+
+  <div class="section contact" id="contact">
+    <h2>Contact Me</h2>
+    <form action="mailto:youremail@example.com" method="post" enctype="text/plain">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+
+  <footer>
+    &copy; 2025 Your Name. All Rights Reserved.
+  </footer>
+
+</body>
+</html>

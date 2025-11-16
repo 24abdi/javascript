@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Traffic Light Simulator</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #222;
+      margin: 0;
+    }
+    .traffic-light {
+      width: 80px;
+      background: #333;
+      padding: 20px;
+      border-radius: 20px;
+    }
+    .light {
+      width: 50px;
+      height: 50px;
+      margin: 10px auto;
+      border-radius: 50%;
+      background: #111;
+      transition: background 0.5s;
+    }
+    .red.off    { background: #330000; }
+    .yellow.off { background: #333300; }
+    .green.off  { background: #003300; }
+    .red.on     { background: red; }
+    .yellow.on  { background: yellow; }
+    .green.on   { background: lime; }
+  </style>
+</head>
+<body>
+  <div class="traffic-light">
+    <div id="red" class="light red off"></div>
+    <div id="yellow" class="light yellow off"></div>
+    <div id="green" class="light green off"></div>
+  </div>
+
+  <script>
+    const red = document.getElementById('red');
+    const yellow = document.getElementById('yellow');
+    const green = document.getElementById('green');
+
+    function setLightState(lightEl, isOn) {
+      if (isOn) {
+        lightEl.classList.remove('off');
+        lightEl.classList.add('on');
+      } else {
+        lightEl.classList.remove('on');
+        lightEl.classList.add('off');
+      }
+    }
+
+    function runTrafficLight() {
+      setLightState(red, true);
+      setLightState(yellow, false);
+      setLightState(green, false);
+
+      setTimeout(() => {
+        setLightState(red, false);
+        setLightState(yellow, false);
+        setLightState(green, true);
+      }, 3000);
+
+      setTimeout(() => {
+        setLightState(red, false);
+        setLightState(yellow, true);
+        setLightState(green, false);
+      }, 5000);
+
+      setTimeout(() => {
+        setLightState(red, true);
+        setLightState(yellow, false);
+        setLightState(green, false);
+      }, 6000);
+    }
+
+    runTrafficLight();
+    const cycleInterval = setInterval(runTrafficLight, 6000);
+  </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Keyboard to Button Demo</title>
+  <style>
+    #info {
+      margin: 1em 0;
+      font-family: sans-serif;
+    }
+    button {
+      margin: 0.5em;
+      padding: 0.5em 1em;
+    }
+    .highlight {
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+  <div id="info">Press a key (A, B, or C) …</div>
+  <button id="btnA">Button A</button>
+  <button id="btnB">Button B</button>
+  <button id="btnC">Button C</button>
+
+  <script>
+    // Map keys to button IDs (or elements)
+    const keyToButton = {
+      "a": "btnA",
+      "b": "btnB",
+      "c": "btnC"
+    };
+
+    const infoDiv = document.getElementById("info");
+
+    // Utility to clear highlights
+    function clearHighlights() {
+      document.querySelectorAll("button.highlight").forEach(btn => {
+        btn.classList.remove("highlight");
+      });
+    }
+
+    // Listen globally on the window or document
+    window.addEventListener("keydown", (event) => {
+      // Normalize key to lowercase (so "A" and "a" work)
+      const pressed = event.key.toLowerCase();
+      infoDiv.textContent = `You pressed: "${pressed}"`;
+
+      // If mapped to a button
+      if (pressed in keyToButton) {
+        const btnId = keyToButton[pressed];
+        const btn = document.getElementById(btnId);
+        if (btn) {
+          // Optionally highlight/select it
+          clearHighlights();
+          btn.classList.add("highlight");
+
+          // Simulate a click
+          btn.click();
+        }
+      }
+    });
+
+    // Example click handlers
+    document.getElementById("btnA").addEventListener("click", () => {
+      alert("Button A clicked!");
+    });
+    document.getElementById("btnB").addEventListener("click", () => {
+      alert("Button B clicked!");
+    });
+    document.getElementById("btnC").addEventListener("click", () => {
+      alert("Button C clicked!");
+    });
+  </script>
+</body>
+</html>

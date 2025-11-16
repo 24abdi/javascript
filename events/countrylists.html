@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Country Dropdown with Flags</title>
+  <style>
+    .dropdown {
+      position: relative;
+      width: 200px;
+      user-select: none;
+    }
+    .dropdown-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      background: #fff;
+    }
+    .dropdown-btn img.flag-icon {
+      width: 20px;
+      height: auto;
+      margin-right: 8px;
+    }
+    .dropdown-list {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      border: 1px solid #ccc;
+      background: #fff;
+      max-height: 200px;
+      overflow-y: auto;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+      display: none;
+      z-index: 100;
+    }
+    .dropdown-item {
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+    .dropdown-item:hover {
+      background-color: #f0f0f0;
+    }
+    .dropdown-item img.flag-icon {
+      width: 20px;
+      height: auto;
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="dropdown" id="countryDropdown">
+    <div class="dropdown-btn" id="dropdownBtn">
+      <span>Select country</span>
+      <span>▾</span>
+    </div>
+    <div class="dropdown-list" id="dropdownList">
+      <!-- JS will fill this -->
+    </div>
+  </div>
+
+  <div id="selectedCountryDisplay" style="margin-top:20px;"></div>
+
+  <script>
+    const countries = [
+      { name: 'Kenya', code: 'ke' },
+      { name: 'United States', code: 'us' },
+      { name: 'France', code: 'fr' },
+      { name: 'Japan', code: 'jp' },
+      { name: 'Brazil', code: 'br' },
+      // … add more as needed
+    ];
+
+    function getFlagUrl(code) {
+      // Use whatever flag source you prefer
+      return `https://flagcdn.com/48x36/${code.toLowerCase()}.png`;
+    }
+
+    const dropdown = document.getElementById('countryDropdown');
+    const btn = document.getElementById('dropdownBtn');
+    const list = document.getElementById('dropdownList');
+    const display = document.getElementById('selectedCountryDisplay');
+
+    // Fill dropdown list
+    countries.forEach(country => {
+      const item = document.createElement('div');
+      item.classList.add('dropdown-item');
+
+      const img = document.createElement('img');
+      img.src = getFlagUrl(country.code);
+      img.alt = country.name + ' flag';
+      img.classList.add('flag-icon');
+
+      const span = document.createElement('span');
+      span.textContent = country.name;
+
+      item.appendChild(img);
+      item.appendChild(span);
+
+      item.addEventListener('click', () => {
+        // When clicked:
+        btn.innerHTML = '';  // clear
+        const imgBtn = document.createElement('img');
+        imgBtn.src = getFlagUrl(country.code);
+        imgBtn.alt = country.name + ' flag';
+        imgBtn.classList.add('flag-icon');
+        btn.appendChild(imgBtn);
+        const text = document.createElement('span');
+        text.textContent = country.name;
+        btn.appendChild(text);
+        const arrow = document.createElement('span');
+        arrow.textContent = '▾';
+        arrow.style.marginLeft = 'auto';
+        btn.appendChild(arrow);
+
+        list.style.display = 'none';
+
+        display.innerHTML = `<strong>Selected:</strong> ${country.name}`;
+      });
+
+      list.appendChild(item);
+    });
+
+    // Toggle dropdown on click
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isVisible = list.style.display === 'block';
+      list.style.display = isVisible ? 'none' : 'block';
+    });
+
+    // Hide if clicked outside
+    document.addEventListener('click', () => {
+      list.style.display = 'none';
+    });
+  </script>
+
+</body>
+</html>
